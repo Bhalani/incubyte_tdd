@@ -17,5 +17,9 @@ RSpec.describe StringCalculator do
     it "returns passed number in string with multiple digits" do
       expect(StringCalculator.add("123")).to eq(123)
     end
+
+    it "returns sum of two numbers in string with comma delimiter" do
+      expect(StringCalculator.add("1,2")).to eq(3)
+    end
   end
 end
