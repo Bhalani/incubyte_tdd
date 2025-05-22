@@ -32,12 +32,6 @@ incubyte_tdd
    bundle install
    ```
 
-## Running the Project
-To run the main application, execute the following command:
-```
-ruby lib/string_calculator.rb
-```
-
 ## Running Tests
 To run the RSpec tests, use the following command:
 ```
