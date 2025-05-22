@@ -3,5 +3,14 @@ module StringCalculator
     numbers.strip!
     return 0 if numbers.empty?
     return numbers.to_i if numbers.match?(/^\d+$/)
+    return sum_of_parse_numbers(numbers)
+  end
+
+  private
+
+  def self.sum_of_parse_numbers(numbers)
+    numbers.split(",").reduce(0) do |sum, number|
+      sum += number.to_i
+    end
   end
 end
