@@ -5,5 +5,9 @@ RSpec.describe StringCalculator do
     it "returns 0 with empty string" do
       expect(StringCalculator.add("")).to eq(0)
     end
+
+    it "returns 0 with string containing only spaces" do
+      expect(StringCalculator.add("   ")).to eq(0)
+    end
   end
 end
