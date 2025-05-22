@@ -3,13 +3,16 @@ module StringCalculator
     numbers.strip!
     return 0 if numbers.empty?
     return numbers.to_i if numbers.match?(/\A\d+\z/)
-    return sum_of_parse_numbers(numbers)
+
+    delimeter = numbers.match(/(?<=^\/\/).(?=\n)/) || ",|\n"
+    numbers = numbers.gsub(/\/\/.\n/, "")
+    return sum_of_parse_numbers(numbers, delimeter)
   end
 
   private
 
-  def self.sum_of_parse_numbers(numbers)
-    numbers.split(/,|\n/).reduce(0) do |sum, number|
+  def self.sum_of_parse_numbers(numbers, delimeter)
+    numbers.split(/#{delimeter}/).reduce(0) do |sum, number|
       sum += number.to_i
     end
   end
