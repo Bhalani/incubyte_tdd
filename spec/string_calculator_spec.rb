@@ -13,5 +13,9 @@ RSpec.describe StringCalculator do
     it "returs passed digitin string with single digit" do
       expect(StringCalculator.add("1")).to eq(1)
     end
+
+    it "returns passed number in string with multiple digits" do
+      expect(StringCalculator.add("123")).to eq(123)
+    end
   end
 end
