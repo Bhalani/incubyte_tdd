@@ -9,5 +9,9 @@ RSpec.describe StringCalculator do
     it "returns 0 with string containing only spaces" do
       expect(StringCalculator.add("   ")).to eq(0)
     end
+
+    it "returs passed digitin string with single digit" do
+      expect(StringCalculator.add("1")).to eq(1)
+    end
   end
 end
