@@ -4,16 +4,24 @@ module StringCalculator
     return 0 if numbers.empty?
     return numbers.to_i if numbers.match?(/\A\d+\z/)
 
-    delimeter = numbers.match(/(?<=^\/\/).(?=\n)/) || ",|\n"
+    delimiter = numbers.match(/(?<=^\/\/).(?=\n)/) || ",|\n"
     numbers = numbers.gsub(/\/\/.\n/, "")
-    return sum_of_parse_numbers(numbers, delimeter)
+    numbers = numbers.split(/#{delimiter}/).map(&:to_i)
+    validate_numbers(numbers, delimiter)
+
+    return sum_of_parse_numbers(numbers, delimiter)
   end
 
   private
 
-  def self.sum_of_parse_numbers(numbers, delimeter)
-    numbers.split(/#{delimeter}/).reduce(0) do |sum, number|
-      sum += number.to_i
+  def self.sum_of_parse_numbers(numbers, delimiter)
+    numbers.reduce(0) do |sum, number|
+      sum += number
     end
+  end
+
+  def self.validate_numbers(numbers, delimiter)
+    negative_numbers = numbers.select { |number| number < 0 }
+    raise "negatives not allowed: #{negative_numbers.join(',')}" unless negative_numbers.empty?
   end
 end
